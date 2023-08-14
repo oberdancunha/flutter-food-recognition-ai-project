@@ -41,6 +41,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.11.0"
+  auto_injector:
+    dependency: transitive
+    description:
+      name: auto_injector
+      sha256: "2b0a076df2dd300ba3acfc270653f351fadf4d7889f042cd853f80ac83661af7"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.0"
   boolean_selector:
     dependency: transitive
     description:
@@ -180,6 +188,14 @@ packages:
       relative: true
     source: path
     version: "1.0.0"
+  flutter_modular:
+    dependency: transitive
+    description:
+      name: flutter_modular
+      sha256: "694faf52b5d2e1bd074f7bdece8da97c579a31c867d491a636b2d8ebac411f93"
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.0.3"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -310,6 +326,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.0"
+  modular_core:
+    dependency: transitive
+    description:
+      name: modular_core
+      sha256: fbcc3683dedbe0ccd1d75636c94c057b56c5ec4e068cc0ac40cefd5ba27c109c
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.3+1"
   nm:
     dependency: transitive
     description:

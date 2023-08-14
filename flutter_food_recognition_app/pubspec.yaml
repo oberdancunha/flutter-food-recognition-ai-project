@@ -1,0 +1,27 @@
+name: flutter_food_recognition_app
+description: Food recognition main app to build in devices.
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.0.6 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_food_recognition_dependency_module:
+    path: ../flutter_food_recognition_dependency_module
+  flutter_food_recognition_core:
+    path: ../flutter_food_recognition_core
+  flutter_food_recognition_clarifai:
+    path: ../flutter_food_recognition_clarifai
+  flutter_food_recognition:
+    path: ../flutter_food_recognition
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  lint: ^2.1.2
+
+flutter:
+  uses-material-design: true

@@ -13,6 +13,7 @@ packages:
   - flutter_food_recognition_core
   - flutter_food_recognition
   - flutter_food_recognition_clarifai
+  - flutter_food_recognition_app
 
 scripts:
   analyze:
