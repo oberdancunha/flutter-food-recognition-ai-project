@@ -1,0 +1,25 @@
+name: flutter_food_recognition
+description: Food recognition source code.
+version: 0.0.1
+publish_to: none
+homepage: none
+
+environment:
+  sdk: '>=3.0.6 <4.0.0'
+  flutter: ">=3.10.6"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_food_recognition_dependency_module:
+    path: ../flutter_food_recognition_dependency_module
+  flutter_food_recognition_core:
+    path: ../flutter_food_recognition_core
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  lint: ^2.1.2
+  mocktail: ^1.0.0
+
+flutter:

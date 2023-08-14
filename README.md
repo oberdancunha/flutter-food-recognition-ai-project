@@ -1,0 +1,1 @@
+# Flutter Food Recognition Using Artificial Intelligence

@@ -1,0 +1,27 @@
+name: food_recognition_ai
+
+ide:
+  intellij: 
+    enabled: false
+
+command:
+  bootstrap:
+    runPubGetInParallel: true
+
+packages:
+  - flutter_food_recognition_dependency_module
+  - flutter_food_recognition_core
+  - flutter_food_recognition
+  - flutter_food_recognition_clarifai
+
+scripts:
+  analyze:
+    run: melos exec -- flutter analyze .
+    description: Run `dart analyze` in all packages.
+
+  test:all:
+    run:  melos exec -c 4 --fail-fast -- "flutter test --coverage"
+    description: Run Flutter test in all projects packages.
+    packageFilters:
+      flutter: true
+      dirExists: test

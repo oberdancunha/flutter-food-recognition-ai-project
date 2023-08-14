@@ -1,0 +1,16 @@
+name: flutter_food_recognition_dependency_module
+description: Register packages to be usage in whole project.
+version: 1.0.0
+# repository: https://github.com/my_org/my_repo
+
+environment:
+  sdk: ^3.0.6
+
+dependencies:
+  asp: ^1.3.0
+  connectivity_plus: ^4.0.2
+  dotenv: ^4.1.0
+  equatable: ^2.0.5
+  kt_dart: ^1.1.0
+  result_dart: ^1.1.0
+  uno: ^1.1.9

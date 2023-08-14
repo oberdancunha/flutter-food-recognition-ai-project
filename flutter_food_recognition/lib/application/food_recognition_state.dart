@@ -1,0 +1,60 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:flutter/foundation.dart';
+import 'package:flutter_food_recognition_core/failure/core_failures.dart';
+import 'package:flutter_food_recognition_dependency_module/flutter_food_recognition_dependency_module.dart';
+
+import '../domain/entities/food_recognition.dart';
+
+sealed class FoodRecognitionState {
+  const FoodRecognitionState();
+}
+
+class FoodRecognitionInitialState extends FoodRecognitionState {
+  const FoodRecognitionInitialState();
+}
+
+class FoodRecognitionLoadingState extends FoodRecognitionState {
+  const FoodRecognitionLoadingState();
+}
+
+@immutable
+class FoodRecognitionSuccessState extends FoodRecognitionState {
+  final KtList<FoodRecognition> foodRecognition;
+
+  const FoodRecognitionSuccessState({
+    required this.foodRecognition,
+  });
+
+  @override
+  bool operator ==(covariant FoodRecognitionSuccessState other) {
+    if (identical(this, other)) {
+      return true;
+    }
+
+    return other.foodRecognition == foodRecognition;
+  }
+
+  @override
+  int get hashCode => foodRecognition.hashCode;
+}
+
+@immutable
+class FoodRecognitionFailureState extends FoodRecognitionState {
+  final CoreFailure failure;
+
+  const FoodRecognitionFailureState({
+    required this.failure,
+  });
+
+  @override
+  bool operator ==(covariant FoodRecognitionFailureState other) {
+    if (identical(this, other)) {
+      return true;
+    }
+
+    return other.failure == failure;
+  }
+
+  @override
+  int get hashCode => failure.hashCode;
+}

@@ -1,0 +1,182 @@
+{
+    "status": {
+        "code": 10000,
+        "description": "Ok",
+        "req_id": "f051e8ba6686715586aaa41a0fade900"
+    },
+    "outputs": [
+        {
+            "id": "fd85537fb39447a894dd7989466dd6d6",
+            "status": {
+                "code": 10000,
+                "description": "Ok"
+            },
+            "created_at": "2023-08-09T14:50:10.291277965Z",
+            "model": {
+                "id": "general-image-recognition",
+                "name": "Image Recognition",
+                "created_at": "2016-03-09T17:11:39.608845Z",
+                "modified_at": "2023-08-08T07:40:14.834337Z",
+                "app_id": "main",
+                "model_version": {
+                    "id": "",
+                    "created_at": "2018-03-06T21:10:24.454834Z",
+                    "status": {
+                        "code": 21100,
+                        "description": "Model is trained and ready"
+                    },
+                    "visibility": {
+                        "gettable": 50
+                    },
+                    "app_id": "main",
+                    "user_id": "clarifai",
+                    "metadata": {}
+                },
+                "user_id": "clarifai",
+                "model_type_id": "visual-classifier",
+                "visibility": {
+                    "gettable": 50
+                },
+                "toolkits": [],
+                "use_cases": [],
+                "languages": [],
+                "languages_full": [],
+                "check_consents": [],
+                "workflow_recommended": false
+            },
+            "input": {
+                "id": "75aee6f4fb9641bba65773cf715703de",
+                "data": {
+                    "image": {
+                        "url": "https://samples.clarifai.com/placeholder.gif",
+                        "base64": "dHJ1ZQ=="
+                    }
+                }
+            },
+            "data": {
+                "concepts": [
+                    {
+                        "id": "ai_3PlgVmlN",
+                        "name": "food",
+                        "value": 0.9863696,
+                        "app_id": "main"
+                    },
+                    {
+                        "id": "ai_s9XQJtDb",
+                        "name": "dinner",
+                        "value": 0.9808899,
+                        "app_id": "main"
+                    },
+                    {
+                        "id": "ai_hJpmfcGg",
+                        "name": "lunch",
+                        "value": 0.97744787,
+                        "app_id": "main"
+                    },
+                    {
+                        "id": "ai_LNw3L7mQ",
+                        "name": "meal",
+                        "value": 0.97499883,
+                        "app_id": "main"
+                    },
+                    {
+                        "id": "ai_CBrmhd40",
+                        "name": "plate",
+                        "value": 0.96617514,
+                        "app_id": "main"
+                    },
+                    {
+                        "id": "ai_0mCQLwrm",
+                        "name": "healthy",
+                        "value": 0.9615104,
+                        "app_id": "main"
+                    },
+                    {
+                        "id": "ai_VM70xlRs",
+                        "name": "cuisine",
+                        "value": 0.9591295,
+                        "app_id": "main"
+                    },
+                    {
+                        "id": "ai_R6xGCTcC",
+                        "name": "meat",
+                        "value": 0.9525125,
+                        "app_id": "main"
+                    },
+                    {
+                        "id": "ai_C5MDXWL5",
+                        "name": "dish",
+                        "value": 0.9504456,
+                        "app_id": "main"
+                    },
+                    {
+                        "id": "ai_QcQF2Btb",
+                        "name": "restaurant",
+                        "value": 0.941705,
+                        "app_id": "main"
+                    },
+                    {
+                        "id": "ai_LpcgM7r5",
+                        "name": "vegetable",
+                        "value": 0.93890077,
+                        "app_id": "main"
+                    },
+                    {
+                        "id": "ai_nl2sV1Hm",
+                        "name": "nutrition",
+                        "value": 0.9367554,
+                        "app_id": "main"
+                    },
+                    {
+                        "id": "ai_835TZJxH",
+                        "name": "tomato",
+                        "value": 0.9336903,
+                        "app_id": "main"
+                    },
+                    {
+                        "id": "ai_431TH5fs",
+                        "name": "tasty",
+                        "value": 0.92548764,
+                        "app_id": "main"
+                    },
+                    {
+                        "id": "ai_mrWb5vrZ",
+                        "name": "hot",
+                        "value": 0.92236847,
+                        "app_id": "main"
+                    },
+                    {
+                        "id": "ai_Lq00FggW",
+                        "name": "desktop",
+                        "value": 0.9214418,
+                        "app_id": "main"
+                    },
+                    {
+                        "id": "ai_Cp0N9mF9",
+                        "name": "diet",
+                        "value": 0.9155479,
+                        "app_id": "main"
+                    },
+                    {
+                        "id": "ai_6rg7sWK6",
+                        "name": "sauce",
+                        "value": 0.9141822,
+                        "app_id": "main"
+                    },
+                    {
+                        "id": "ai_KXNqVd5F",
+                        "name": "cooking",
+                        "value": 0.90959597,
+                        "app_id": "main"
+                    },
+                    {
+                        "id": "ai_7HKB9Zdr",
+                        "name": "beef",
+                        "value": 0.90578556,
+                        "app_id": "main"
+                    }
+                ]
+            }
+        }
+    ]
+}
