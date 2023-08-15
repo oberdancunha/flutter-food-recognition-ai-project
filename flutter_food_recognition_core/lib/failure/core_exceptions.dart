@@ -1,11 +1,11 @@
-class AuthenticationCredentialsException implements Exception {
+final class AuthenticationCredentialsException implements Exception {
   const AuthenticationCredentialsException();
 }
 
-class UnexpectedHttpException implements Exception {
+final class UnexpectedHttpException implements Exception {
   const UnexpectedHttpException();
 }
 
-class ResponseHttpException implements Exception {
+final class ResponseHttpException implements Exception {
   const ResponseHttpException();
 }
