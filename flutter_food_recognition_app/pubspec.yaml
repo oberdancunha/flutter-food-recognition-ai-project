@@ -4,7 +4,7 @@ publish_to: 'none'
 version: 0.1.0
 
 environment:
-  sdk: '>=3.0.6 <4.0.0'
+  sdk: '>=3.1.0 <4.0.0'
 
 dependencies:
   flutter:
@@ -25,3 +25,26 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  fonts:
+    - family: PTSans
+      fonts:
+        - asset: assets/fonts/PTSans/PTSans-Regular.ttf
+        - style: normal
+        - weight: 400
+        - asset: assets/fonts/PTSans/PTSans-Bold.ttf
+        - style: normal
+        - weight: 700
+    - family: GoodBoy
+      fonts:
+        - asset: assets/fonts/GoodBoy/GoodBoy.otf
+        - style: normal
+        - weight: 400
+  
+  assets:
+    - assets/images/food_camera.png
+    - assets/images/food_gallery.png
+    - assets/images/background.png
+
+
+      
