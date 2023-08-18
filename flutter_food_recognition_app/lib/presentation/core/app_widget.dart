@@ -1,17 +1,38 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_food_recognition_dependency_module/flutter_food_recognition_dependency_module.dart';
 
-class AppWidget extends StatelessWidget {
+import '../theme/theme.dart';
+
+class AppWidget extends StatefulWidget {
   const AppWidget({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    Modular.setInitialRoute('/');
+  State<AppWidget> createState() => _AppWidgetState();
+}
 
-    return MaterialApp.router(
-      title: 'Food recognition using AI',
-      debugShowCheckedModeBanner: false,
-      routerConfig: Modular.routerConfig,
-    );
+class _AppWidgetState extends State<AppWidget> {
+  @override
+  void initState() {
+    super.initState();
+    if (Platform.isIOS) {
+      SystemChrome.setSystemUIOverlayStyle(
+        const SystemUiOverlayStyle(
+          statusBarBrightness: Brightness.light,
+          statusBarIconBrightness: Brightness.light,
+        ),
+      );
+      Modular.setInitialRoute('/');
+    }
   }
+
+  @override
+  Widget build(BuildContext context) => MaterialApp.router(
+        title: 'Meu Prato',
+        theme: theme,
+        debugShowCheckedModeBanner: false,
+        routerConfig: Modular.routerConfig,
+      );
 }
