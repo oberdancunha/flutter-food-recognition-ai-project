@@ -20,10 +20,10 @@ class ClarifaiCredentials implements DataSourceCredentials {
             "data": {
               "image": {
                 "base64": input,
-              }
-            }
+              },
+            },
           }
-        ]
+        ],
       };
 
   @override

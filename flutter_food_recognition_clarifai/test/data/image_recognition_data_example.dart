@@ -21,7 +21,7 @@ final Map<String, dynamic> imageRecognitionDataResponse = {
           "visibility": {"gettable": 50},
           "app_id": "main",
           "user_id": "clarifai",
-          "metadata": {}
+          "metadata": {},
         },
         "user_id": "clarifai",
         "model_type_id": "visual-classifier",
@@ -31,13 +31,13 @@ final Map<String, dynamic> imageRecognitionDataResponse = {
         "languages": [],
         "languages_full": [],
         "check_consents": [],
-        "workflow_recommended": false
+        "workflow_recommended": false,
       },
       "input": {
         "id": "75aee6f4fb9641bba65773cf715703de",
         "data": {
-          "image": {"url": "https://samples.clarifai.com/placeholder.gif", "base64": "dHJ1ZQ=="}
-        }
+          "image": {"url": "https://samples.clarifai.com/placeholder.gif", "base64": "dHJ1ZQ=="},
+        },
       },
       "data": {
         "concepts": [
@@ -60,11 +60,11 @@ final Map<String, dynamic> imageRecognitionDataResponse = {
           {"id": "ai_Cp0N9mF9", "name": "diet", "value": 0.9155479, "app_id": "main"},
           {"id": "ai_6rg7sWK6", "name": "sauce", "value": 0.9141822, "app_id": "main"},
           {"id": "ai_KXNqVd5F", "name": "cooking", "value": 0.90959597, "app_id": "main"},
-          {"id": "ai_7HKB9Zdr", "name": "beef", "value": 0.90578556, "app_id": "main"}
-        ]
-      }
+          {"id": "ai_7HKB9Zdr", "name": "beef", "value": 0.90578556, "app_id": "main"},
+        ],
+      },
     }
-  ]
+  ],
 };
 
 final imageRecognitionDataExample = {
@@ -88,6 +88,6 @@ final imageRecognitionDataExample = {
     {"id": "ai_Cp0N9mF9", "name": "diet", "value": 0.9155479, "app_id": "main"},
     {"id": "ai_6rg7sWK6", "name": "sauce", "value": 0.9141822, "app_id": "main"},
     {"id": "ai_KXNqVd5F", "name": "cooking", "value": 0.90959597, "app_id": "main"},
-    {"id": "ai_7HKB9Zdr", "name": "beef", "value": 0.90578556, "app_id": "main"}
-  ]
+    {"id": "ai_7HKB9Zdr", "name": "beef", "value": 0.90578556, "app_id": "main"},
+  ],
 };
