@@ -12,6 +12,7 @@ dependencies:
   dotenv: ^4.1.0
   equatable: ^2.0.5
   flutter_modular: ^6.0.3
+  image_picker: ^1.0.2
   kt_dart: ^1.1.0
   result_dart: ^1.1.0
   uno: ^1.1.9
