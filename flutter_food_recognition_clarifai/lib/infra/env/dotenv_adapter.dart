@@ -8,9 +8,14 @@ class DotEnvAdapter implements Env {
 
   DotEnvAdapter({DotEnv? env}) {
     _env = env;
+    _init();
+  }
+
+  Future<void> _init() async {
     if (_env == null) {
-      _env = DotEnv(includePlatformEnvironment: true)..load();
-    } else if (_env!.map.isEmpty) {
+      _env = DotEnv();
+      await _env!.load();
+    } else if (!_env!.isInitialized) {
       _env!.load();
     }
   }
@@ -38,10 +43,11 @@ class DotEnvAdapter implements Env {
 
   @override
   String load(String key) {
-    if (_env == null || _env!.isDefined(key) == false || _env![key]!.isEmpty) {
-      throw const AuthenticationCredentialsException();
+    final value = _env!.maybeGet(key);
+    if (value != null && value.isNotEmpty && value != "''") {
+      return value;
     }
 
-    return _env![key]!;
+    throw const AuthenticationCredentialsException();
   }
 }

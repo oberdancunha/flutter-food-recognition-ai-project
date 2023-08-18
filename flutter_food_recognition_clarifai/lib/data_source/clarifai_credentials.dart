@@ -3,7 +3,7 @@ import 'package:flutter_food_recognition_core/data_source/data_source_credential
 import '../infra/env/env.dart';
 
 class ClarifaiCredentials implements DataSourceCredentials {
-  late final Env _env;
+  late Env _env;
 
   ClarifaiCredentials({required Env env}) {
     _env = env;

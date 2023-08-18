@@ -1,0 +1,6 @@
+CLARIFAI_BASE_URL=https://api.clarifai.com
+CLARIFAI_MODEL_URL=v2/models
+CLARIFAI_API_MODEL_ID=general-image-recognition/versions
+CLARIFAI_API_MODEL_VERSION_ID=dxx1heshob9av97z4nb3azitgqb0stx6
+CLARIFAI_PROJECT_NAME=''
+CLARIFAI_PROJECT_ID=q9zactk21d6fr7meqokfkvb4va0cxdox
