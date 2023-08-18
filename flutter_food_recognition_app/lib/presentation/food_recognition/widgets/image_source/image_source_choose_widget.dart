@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'dart:io' as IO;
+import 'dart:io' as io;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_food_recognition/application/food_recognition_reducer.dart';
@@ -62,9 +62,9 @@ class _ImageSourceChooseWidgetState extends State<ImageSourceChooseWidget> {
                     source: _imageSourceItem.elementAt(index).imageSource,
                   );
                   if (image != null) {
-                    final bytesImage = await IO.File(image.path).readAsBytes();
+                    final bytesImage = await io.File(image.path).readAsBytes();
                     final base64Image = base64Encode(bytesImage);
-                    // _foodRecognitionReducer.getFoodRecognition(base64Image);
+                    _foodRecognitionReducer.getFoodRecognition(base64Image);
                   }
                 },
               ),
