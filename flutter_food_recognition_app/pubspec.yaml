@@ -30,16 +30,16 @@ flutter:
     - family: PTSans
       fonts:
         - asset: assets/fonts/PTSans/PTSans-Regular.ttf
-        - style: normal
-        - weight: 400
+          style: normal
+          weight: 400
         - asset: assets/fonts/PTSans/PTSans-Bold.ttf
-        - style: normal
-        - weight: 700
+          style: normal
+          weight: 700
     - family: GoodBoy
       fonts:
         - asset: assets/fonts/GoodBoy/GoodBoy.otf
-        - style: normal
-        - weight: 400
+          style: normal
+          weight: 400
   
   assets:
     - assets/images/food_camera.png
