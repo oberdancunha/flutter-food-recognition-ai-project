@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class BottomNavigationOption extends StatelessWidget {
+class ImageSourceOptionWidget extends StatelessWidget {
   final String image;
   final String title;
   final bool isSelected;
 
-  const BottomNavigationOption({
+  const ImageSourceOptionWidget({
     required this.image,
     required this.title,
     required this.isSelected,

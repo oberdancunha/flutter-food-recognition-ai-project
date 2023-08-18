@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_food_recognition_dependency_module/flutter_food_recognition_dependency_module.dart';
 
-import 'widgets/bottom_navigation/bottom_navigation_widget.dart';
-import 'widgets/main_title_widget.dart';
+import 'widgets/food_recognition_body_widget.dart';
+import 'widgets/image_source/image_source_choose_widget.dart';
 
 class FoodRecognitionPage extends StatelessWidget {
   const FoodRecognitionPage({super.key});
@@ -13,12 +14,12 @@ class FoodRecognitionPage extends StatelessWidget {
           child: SizedBox(
             height: MediaQuery.sizeOf(context).height,
             width: MediaQuery.sizeOf(context).width,
-            child: const MainTitleWidget(),
+            child: const RxRoot(child: FoodRecognitionBodyWidget()),
           ),
         ),
         bottomNavigationBar: const Padding(
-          padding: EdgeInsets.all(10),
-          child: BottomNavigationWidget(),
+          padding: EdgeInsets.only(bottom: 10),
+          child: ImageSourceChooseWidget(),
         ),
       );
 }
