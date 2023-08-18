@@ -9,7 +9,9 @@ class FoodRecognitionCoreModule extends Module {
   @override
   void exportedBinds(Injector i) {
     i
+      ..addInstance<Uno>(Uno())
       ..addLazySingleton<HttpClient>(UnoAdapter.new)
+      ..addLazySingleton<Connectivity>(Connectivity.new)
       ..addLazySingleton<Connection>(ConnectivityAdapter.new);
 
     super.exportedBinds(i);

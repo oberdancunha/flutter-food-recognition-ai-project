@@ -9,7 +9,7 @@ class FoodRecognitionModule extends Module {
   void exportedBinds(Injector i) {
     i
       ..addLazySingleton<FoodRecognitionGateway>(FoodRecognitionGatewayHttp.new)
-      ..addLazySingleton(FoodRecognitionReducer.new);
+      ..addLazySingleton<FoodRecognitionReducer>(FoodRecognitionReducer.new);
     super.exportedBinds(i);
   }
 }

@@ -11,7 +11,8 @@ class FoodRecognitionClarifaiModule extends Module {
   @override
   void exportedBinds(Injector i) {
     i
-      ..addLazySingleton<Env>(DotEnvAdapter.new)
+      ..addSingleton<DotEnv>(DotEnv.new)
+      ..addSingleton<Env>(DotEnvAdapter.new)
       ..addLazySingleton<DataSourceCredentials>(ClarifaiCredentials.new)
       ..addLazySingleton<DataSourceDto>(ClarifaiDataSourceDto.new);
     super.exportedBinds(i);
