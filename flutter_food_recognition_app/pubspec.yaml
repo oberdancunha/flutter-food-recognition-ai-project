@@ -19,9 +19,12 @@ dependencies:
     path: ../flutter_food_recognition
 
 dev_dependencies:
+  integration_test:
+    sdk: flutter
   flutter_test:
     sdk: flutter
   lint: ^2.1.2
+  mocktail: ^1.0.0
 
 flutter:
   uses-material-design: true
@@ -45,6 +48,7 @@ flutter:
     - assets/images/food_camera.png
     - assets/images/food_gallery.png
     - assets/images/background.png
+    - assets/images/food_image_example.jpeg
 
 
       

@@ -14,5 +14,6 @@ dependencies:
   flutter_modular: ^6.0.4+1
   image_picker: ^1.0.2
   kt_dart: ^1.1.0
+  path_provider: ^2.1.0
   result_dart: ^1.1.0
   uno: ^1.1.9
