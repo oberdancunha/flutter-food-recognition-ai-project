@@ -16,4 +16,5 @@ dependencies:
   kt_dart: ^1.1.0
   path_provider: ^2.1.0
   result_dart: ^1.1.0
+  shimmer: ^3.0.0
   uno: ^1.1.9
