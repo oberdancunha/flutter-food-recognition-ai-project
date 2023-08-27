@@ -26,11 +26,13 @@ class _ImageSourceChooseWidgetState extends State<ImageSourceChooseWidget> {
     super.initState();
     _imageSourceItem = [
       ImageSourceItem(
+        key: 'camera',
         title: 'Câmera',
         image: 'food_camera.png',
         imageSource: ImageSource.camera,
       ),
       ImageSourceItem(
+        key: 'gallery',
         title: 'Galeria',
         image: 'food_gallery.png',
         imageSource: ImageSource.gallery,
@@ -49,6 +51,9 @@ class _ImageSourceChooseWidgetState extends State<ImageSourceChooseWidget> {
           children: [
             for (int index = 0; index < _imageSourceItem.length; index++) ...[
               InkWell(
+                key: Key(
+                  '${_imageSourceItem.elementAt(index).key}_choose_image_resource_button',
+                ),
                 child: ImageSourceOptionWidget(
                   image: 'assets/images/${_imageSourceItem.elementAt(index).image}',
                   title: _imageSourceItem.elementAt(index).title,
