@@ -12,7 +12,7 @@ class FoodRecognitionReducer {
   }
 
   Future<void> getFoodRecognition(String base64Image) async {
-    foodRecognitionState.value = const FoodRecognitionLoadingState();
+    foodRecognitionState.value = FoodRecognitionLoadingState(base64Image: base64Image);
     final foodRecognitionResult = await _foodRecognitionGateway.getImageRecognition(base64Image);
     foodRecognitionResult.fold(
       (foodRecognition) => foodRecognitionState.value = FoodRecognitionSuccessState(

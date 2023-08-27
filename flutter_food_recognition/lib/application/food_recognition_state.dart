@@ -14,7 +14,9 @@ class FoodRecognitionInitialState extends FoodRecognitionState {
 }
 
 class FoodRecognitionLoadingState extends FoodRecognitionState {
-  const FoodRecognitionLoadingState();
+  final String base64Image;
+
+  const FoodRecognitionLoadingState({required this.base64Image});
 }
 
 @immutable

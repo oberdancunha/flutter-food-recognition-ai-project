@@ -21,7 +21,7 @@ class MainTitleWidget extends StatelessWidget {
                   style: TextStyle(
                     fontFamily: 'GoodBoy',
                     fontSize: MediaQuery.sizeOf(context).width * 0.25,
-                    color: Theme.of(context).colorScheme.tertiary,
+                    color: Theme.of(context).textTheme.titleLarge!.color,
                     height: 1.1,
                   ),
                   textAlign: TextAlign.center,

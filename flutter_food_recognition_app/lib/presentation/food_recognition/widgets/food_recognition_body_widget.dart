@@ -17,7 +17,9 @@ class FoodRecognitionBodyWidget extends StatelessWidget {
 
     return switch (foodRecognition) {
       FoodRecognitionInitialState() => const MainTitleWidget(),
-      FoodRecognitionLoadingState() => const FoodRecognitionLoadingWidget(),
+      FoodRecognitionLoadingState(base64Image: final base64Image) => FoodRecognitionLoadingWidget(
+          base64Image: base64Image,
+        ),
       FoodRecognitionSuccessState() => const FoodRecognitionResultWidget(),
       FoodRecognitionFailureState() => const FoodRecognitionErrorWidget(),
     };
