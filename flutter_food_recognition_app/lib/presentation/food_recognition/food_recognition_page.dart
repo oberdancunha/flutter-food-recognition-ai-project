@@ -10,13 +10,7 @@ class FoodRecognitionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
         backgroundColor: Theme.of(context).colorScheme.primary,
-        body: Center(
-          child: SizedBox(
-            height: MediaQuery.sizeOf(context).height,
-            width: MediaQuery.sizeOf(context).width,
-            child: const RxRoot(child: FoodRecognitionBodyWidget()),
-          ),
-        ),
+        body: const RxRoot(child: FoodRecognitionBodyWidget()),
         bottomNavigationBar: const Padding(
           padding: EdgeInsets.only(bottom: 10),
           child: ImageSourceChooseWidget(),

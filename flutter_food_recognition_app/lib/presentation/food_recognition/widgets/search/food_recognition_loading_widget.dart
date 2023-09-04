@@ -1,32 +1,17 @@
-import 'dart:convert';
-import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_food_recognition_dependency_module/flutter_food_recognition_dependency_module.dart';
 
+import '../image_choosed_widget.dart';
 import '../scanner_image/scanner_animation_widget.dart';
 import '../scanner_image/scanner_image_border_painter.dart';
 
-class FoodRecognitionLoadingWidget extends StatefulWidget {
-  final String? base64Image;
+class FoodRecognitionLoadingWidget extends StatelessWidget {
+  final String base64Image;
 
   const FoodRecognitionLoadingWidget({
     required this.base64Image,
     super.key,
   });
-
-  @override
-  State<FoodRecognitionLoadingWidget> createState() => _FoodRecognitionLoadingWidgetState();
-}
-
-class _FoodRecognitionLoadingWidgetState extends State<FoodRecognitionLoadingWidget> {
-  late Uint8List _bytesImage;
-
-  @override
-  void initState() {
-    super.initState();
-    _bytesImage = const Base64Codec().decode(widget.base64Image!);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +35,7 @@ class _FoodRecognitionLoadingWidgetState extends State<FoodRecognitionLoadingWid
                   child: Center(
                     child: Padding(
                       padding: resizeToFrame,
-                      child: Image.memory(_bytesImage),
+                      child: ImageChoosedWidget(base64Image: base64Image),
                     ),
                   ),
                 ),

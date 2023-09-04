@@ -55,7 +55,8 @@ void main() {
             foodRecognitionState.value,
             equals(
               FoodRecognitionSuccessState(
-                foodRecognition: foodRecognitionDomain.toImmutableList(),
+                base64Image: '',
+                foodRecognitionList: foodRecognitionDomain.toImmutableList(),
               ),
             ),
           );

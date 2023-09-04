@@ -6,7 +6,7 @@ import 'package:flutter_food_recognition_dependency_module/flutter_food_recognit
 import 'main_title_widget.dart';
 import 'search/food_recognition_error_widget.dart';
 import 'search/food_recognition_loading_widget.dart';
-import 'search/food_recognition_result_widget.dart';
+import 'search/result/food_recognition_result_widget.dart';
 
 class FoodRecognitionBodyWidget extends StatelessWidget {
   const FoodRecognitionBodyWidget({super.key});
@@ -20,7 +20,14 @@ class FoodRecognitionBodyWidget extends StatelessWidget {
       FoodRecognitionLoadingState(base64Image: final base64Image) => FoodRecognitionLoadingWidget(
           base64Image: base64Image,
         ),
-      FoodRecognitionSuccessState() => const FoodRecognitionResultWidget(),
+      FoodRecognitionSuccessState(
+        base64Image: final base64Image,
+        foodRecognitionList: final foodRecognitionList
+      ) =>
+        FoodRecognitionResultWidget(
+          base64Image: base64Image,
+          foodRecognitionList: foodRecognitionList,
+        ),
       FoodRecognitionFailureState() => const FoodRecognitionErrorWidget(),
     };
   }

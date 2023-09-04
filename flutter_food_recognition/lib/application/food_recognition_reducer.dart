@@ -16,7 +16,8 @@ class FoodRecognitionReducer {
     final foodRecognitionResult = await _foodRecognitionGateway.getImageRecognition(base64Image);
     foodRecognitionResult.fold(
       (foodRecognition) => foodRecognitionState.value = FoodRecognitionSuccessState(
-        foodRecognition: foodRecognition,
+        base64Image: base64Image,
+        foodRecognitionList: foodRecognition,
       ),
       (failure) => foodRecognitionState.value = FoodRecognitionFailureState(failure: failure),
     );

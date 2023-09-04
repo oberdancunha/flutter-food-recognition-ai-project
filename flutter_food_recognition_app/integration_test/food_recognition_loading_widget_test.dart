@@ -11,7 +11,7 @@ import 'package:flutter_food_recognition_app/presentation/food_recognition/widge
 import 'package:flutter_food_recognition_app/presentation/food_recognition/widgets/main_title_widget.dart';
 import 'package:flutter_food_recognition_app/presentation/food_recognition/widgets/search/food_recognition_error_widget.dart';
 import 'package:flutter_food_recognition_app/presentation/food_recognition/widgets/search/food_recognition_loading_widget.dart';
-import 'package:flutter_food_recognition_app/presentation/food_recognition/widgets/search/food_recognition_result_widget.dart';
+import 'package:flutter_food_recognition_app/presentation/food_recognition/widgets/search/result/food_recognition_result_widget.dart';
 import 'package:flutter_food_recognition_core/failure/core_failures.dart';
 import 'package:flutter_food_recognition_dependency_module/flutter_food_recognition_dependency_module.dart';
 import 'package:flutter_test/flutter_test.dart';

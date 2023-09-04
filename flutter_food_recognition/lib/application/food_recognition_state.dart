@@ -21,10 +21,12 @@ class FoodRecognitionLoadingState extends FoodRecognitionState {
 
 @immutable
 class FoodRecognitionSuccessState extends FoodRecognitionState {
-  final KtList<FoodRecognition> foodRecognition;
+  final String base64Image;
+  final KtList<FoodRecognition> foodRecognitionList;
 
   const FoodRecognitionSuccessState({
-    required this.foodRecognition,
+    required this.base64Image,
+    required this.foodRecognitionList,
   });
 
   @override
@@ -33,11 +35,11 @@ class FoodRecognitionSuccessState extends FoodRecognitionState {
       return true;
     }
 
-    return other.foodRecognition == foodRecognition;
+    return other.foodRecognitionList == foodRecognitionList;
   }
 
   @override
-  int get hashCode => foodRecognition.hashCode;
+  int get hashCode => foodRecognitionList.hashCode;
 }
 
 @immutable
