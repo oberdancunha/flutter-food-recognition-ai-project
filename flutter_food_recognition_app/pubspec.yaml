@@ -49,6 +49,7 @@ flutter:
     - assets/images/food_gallery.png
     - assets/images/background.png
     - assets/images/food_image_example.jpeg
+    - assets/images/foods/
 
 
       
