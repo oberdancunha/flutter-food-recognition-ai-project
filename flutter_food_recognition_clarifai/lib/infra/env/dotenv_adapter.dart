@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_food_recognition_core/failure/core_exceptions.dart';
 import 'package:flutter_food_recognition_dependency_module/flutter_food_recognition_dependency_module.dart';
 
@@ -12,11 +14,12 @@ class DotEnvAdapter implements Env {
   }
 
   Future<void> _init() async {
+    const fileName = 'packages/flutter_food_recognition_clarifai/.env';
     if (_env == null) {
       _env = DotEnv();
-      await _env!.load();
+      _env!.load(fileName: fileName);
     } else if (!_env!.isInitialized) {
-      _env!.load();
+      _env!.load(fileName: fileName);
     }
   }
 
