@@ -3,17 +3,21 @@ import 'package:flutter/material.dart';
 
 class IngredientThemeExtension extends ThemeExtension<IngredientThemeExtension> {
   final Color? backgroundColor;
+  final Brightness? brightness;
 
   const IngredientThemeExtension({
     required this.backgroundColor,
+    required this.brightness,
   });
 
   @override
   IngredientThemeExtension copyWith({
     Color? backgroundColor,
+    Brightness? brightness,
   }) =>
       IngredientThemeExtension(
         backgroundColor: backgroundColor ?? this.backgroundColor,
+        brightness: brightness ?? this.brightness,
       );
 
   @override
@@ -27,6 +31,7 @@ class IngredientThemeExtension extends ThemeExtension<IngredientThemeExtension> 
 
     return IngredientThemeExtension(
       backgroundColor: Color.lerp(backgroundColor, other.backgroundColor, t),
+      brightness: brightness,
     );
   }
 }

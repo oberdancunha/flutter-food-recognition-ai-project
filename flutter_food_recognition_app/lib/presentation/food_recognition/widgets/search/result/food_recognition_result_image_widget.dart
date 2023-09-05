@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../image_choosed_widget.dart';
+import '../../../main/image_choosed_widget.dart';
 
 class FoodRecognitionResultImageWidget extends StatelessWidget {
   final String base64Image;

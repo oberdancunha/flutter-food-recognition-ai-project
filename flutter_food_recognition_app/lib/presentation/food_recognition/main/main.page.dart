@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_food_recognition_dependency_module/flutter_food_recognition_dependency_module.dart';
 
-import 'widgets/food_recognition_body_widget.dart';
-import 'widgets/image_source/image_source_choose_widget.dart';
+import '../widgets/food_recognition_body_widget.dart';
+import '../widgets/image_source/image_source_choose_widget.dart';
 
-class FoodRecognitionPage extends StatelessWidget {
-  const FoodRecognitionPage({super.key});
+class MainPage extends StatelessWidget {
+  const MainPage({super.key});
 
   @override
   Widget build(BuildContext context) => Scaffold(

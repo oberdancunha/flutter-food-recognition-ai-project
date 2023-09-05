@@ -5,6 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_food_recognition/domain/entities/food_recognition.dart';
 import 'package:flutter_food_recognition_dependency_module/flutter_food_recognition_dependency_module.dart';
 
+import '../../../../theme/ingredient_theme_extension.dart';
+import '../../../main/main_title_widget.dart';
 import 'food_recognition_result_background_widget.dart';
 import 'food_recognition_result_data_widget.dart';
 import 'food_recognition_result_image_widget.dart';
@@ -21,11 +23,13 @@ class FoodRecognitionResultWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ingredientThemeExtension = Theme.of(context).extension<IngredientThemeExtension>()!;
+
     if (Platform.isIOS) {
       SystemChrome.setSystemUIOverlayStyle(
         SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).colorScheme.brightness,
-          statusBarIconBrightness: Theme.of(context).colorScheme.brightness,
+          statusBarBrightness: ingredientThemeExtension.brightness,
+          statusBarIconBrightness: ingredientThemeExtension.brightness,
         ),
       );
     }
@@ -35,6 +39,14 @@ class FoodRecognitionResultWidget extends StatelessWidget {
       child: Stack(
         alignment: Alignment.topCenter,
         children: [
+          Positioned(
+            top: MediaQuery.sizeOf(context).height * 0.06,
+            left: MediaQuery.sizeOf(context).height * 0.015,
+            child: MainTitleWidget(
+              fontSize: MediaQuery.sizeOf(context).width * 0.09,
+              fontColor: Theme.of(context).textTheme.titleSmall!.color!,
+            ),
+          ),
           const FoodRecognitionResultBackgroundWidget(),
           Positioned(
             top: MediaQuery.sizeOf(context).height * 0.08,

@@ -1,7 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_food_recognition_dependency_module/flutter_food_recognition_dependency_module.dart';
 
-import '../image_choosed_widget.dart';
+import '../../main/image_choosed_widget.dart';
+import '../../main/main_title_widget.dart';
 import '../scanner_image/scanner_animation_widget.dart';
 import '../scanner_image/scanner_image_border_painter.dart';
 
@@ -15,6 +19,15 @@ class FoodRecognitionLoadingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (Platform.isIOS) {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          statusBarBrightness: Theme.of(context).colorScheme.brightness,
+          statusBarIconBrightness: Theme.of(context).colorScheme.brightness,
+        ),
+      );
+    }
+
     final resizeToFrame = EdgeInsets.symmetric(
       horizontal: MediaQuery.sizeOf(context).width * 0.07,
       vertical: MediaQuery.sizeOf(context).height * 0.045,
@@ -23,6 +36,19 @@ class FoodRecognitionLoadingWidget extends StatelessWidget {
     return Stack(
       alignment: Alignment.center,
       children: [
+        Padding(
+          padding: EdgeInsets.only(
+            top: MediaQuery.sizeOf(context).height * 0.05,
+            left: MediaQuery.sizeOf(context).height * 0.015,
+          ),
+          child: Align(
+            alignment: Alignment.topLeft,
+            child: MainTitleWidget(
+              fontSize: MediaQuery.sizeOf(context).width * 0.15,
+              fontColor: Theme.of(context).textTheme.titleLarge!.color!,
+            ),
+          ),
+        ),
         SizedBox(
           height: MediaQuery.sizeOf(context).height * 0.5,
           width: MediaQuery.sizeOf(context).width * 0.8,
@@ -58,7 +84,7 @@ class FoodRecognitionLoadingWidget extends StatelessWidget {
               highlightColor: Theme.of(context).colorScheme.secondary,
               period: const Duration(seconds: 4),
               child: Text(
-                'Realizando a análise do prato',
+                'Realizando a análise da imagem',
                 style: TextStyle(
                   fontSize: MediaQuery.sizeOf(context).width * 0.06,
                   fontWeight: FontWeight.w700,

@@ -5,10 +5,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter_food_recognition/infra/gateway/food_recognition_gateway.dart';
 import 'package:flutter_food_recognition_app/presentation/core/app_module.dart';
 import 'package:flutter_food_recognition_app/presentation/core/app_widget.dart';
-import 'package:flutter_food_recognition_app/presentation/food_recognition/food_recognition_page.dart';
+import 'package:flutter_food_recognition_app/presentation/food_recognition/main/main.page.dart';
+import 'package:flutter_food_recognition_app/presentation/food_recognition/main/main_body_widget.dart';
 import 'package:flutter_food_recognition_app/presentation/food_recognition/widgets/food_recognition_body_widget.dart';
 import 'package:flutter_food_recognition_app/presentation/food_recognition/widgets/image_source/image_source_choose_widget.dart';
-import 'package:flutter_food_recognition_app/presentation/food_recognition/widgets/main_title_widget.dart';
 import 'package:flutter_food_recognition_app/presentation/food_recognition/widgets/search/food_recognition_error_widget.dart';
 import 'package:flutter_food_recognition_app/presentation/food_recognition/widgets/search/food_recognition_loading_widget.dart';
 import 'package:flutter_food_recognition_app/presentation/food_recognition/widgets/search/result/food_recognition_result_widget.dart';
@@ -39,14 +39,14 @@ void main() {
   Future<void> mainBodyApp(WidgetTester tester) async {
     await tester.pumpWidget(const AppWidget());
     await tester.pump();
-    expect(find.byType(FoodRecognitionPage), findsOneWidget);
+    expect(find.byType(MainPage), findsOneWidget);
     expect(find.byType(RxRoot), findsOneWidget);
     expect(find.byType(ImageSourceChooseWidget), findsOneWidget);
     await tester.tap(
       find.byKey(const Key('gallery_choose_image_resource_button')),
     );
     expect(find.byType(FoodRecognitionBodyWidget), findsOneWidget);
-    expect(find.byType(MainTitleWidget), findsOneWidget);
+    expect(find.byType(MainBodyWidget), findsOneWidget);
     await tester.pump(const Duration(seconds: 5));
     expect(find.byType(FoodRecognitionLoadingWidget), findsOneWidget);
     await tester.pumpAndSettle();

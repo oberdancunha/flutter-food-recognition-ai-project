@@ -45,11 +45,17 @@ class _FoodRecognitionResultIngredientWidgetState
             'assets/images/foods/$ingredientImageName.png',
             errorBuilder: (_, __, ___) => Image.asset('assets/images/foods/food.png'),
           ),
-          Text(
-            widget.ingredientName,
-            style: TextStyle(
-              fontSize: MediaQuery.sizeOf(context).width * 0.04,
-              fontWeight: FontWeight.w700,
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 5),
+              child: Text(
+                widget.ingredientName,
+                style: TextStyle(
+                  fontSize: MediaQuery.sizeOf(context).width * 0.04,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
             ),
           ),
         ],

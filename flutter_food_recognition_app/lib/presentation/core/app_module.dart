@@ -3,7 +3,7 @@ import 'package:flutter_food_recognition_clarifai/module/food_recognition_clarif
 import 'package:flutter_food_recognition_core/module/food_recognition_core_module.dart';
 import 'package:flutter_food_recognition_dependency_module/flutter_food_recognition_dependency_module.dart';
 
-import '../food_recognition/food_recognition_page.dart';
+import '../food_recognition/main/main.page.dart';
 
 class AppModule extends Module {
   @override
@@ -17,7 +17,7 @@ class AppModule extends Module {
   void routes(RouteManager r) {
     r.child(
       '/',
-      child: (_) => const FoodRecognitionPage(),
+      child: (_) => const MainPage(),
     );
     super.routes(r);
   }
