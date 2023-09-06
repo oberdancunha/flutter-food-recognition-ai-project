@@ -52,7 +52,7 @@ void main() {
       });
 
       group('Errors |', () {
-        test('Should throw a UnexpectedHttpException when there is a unexpected error', () {
+        test('Should throw an UnexpectedHttpException when there is a unexpected error', () {
           when(
             () => mockUno.post(
               any(),
