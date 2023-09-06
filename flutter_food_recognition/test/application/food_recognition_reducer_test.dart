@@ -1,7 +1,7 @@
 import 'package:flutter_food_recognition/application/food_recognition_atom.dart';
 import 'package:flutter_food_recognition/application/food_recognition_reducer.dart';
 import 'package:flutter_food_recognition/application/food_recognition_state.dart';
-import 'package:flutter_food_recognition/infra/gateway/food_recognition_gateway.dart';
+import 'package:flutter_food_recognition/infra/repository/food_recognition_repository.dart';
 import 'package:flutter_food_recognition_core/failure/core_failures.dart';
 import 'package:flutter_food_recognition_dependency_module/flutter_food_recognition_dependency_module.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -9,23 +9,23 @@ import 'package:mocktail/mocktail.dart';
 
 import '../data/food_recognition_domain_example.dart';
 
-class MockFoodRecognitionGateway extends Mock implements FoodRecognitionGateway {}
+class MockFoodRecognitionRepository extends Mock implements FoodRecognitionRepository {}
 
 void main() {
-  late MockFoodRecognitionGateway mockFoodRecognitionGateway;
+  late MockFoodRecognitionRepository mockFoodRecognitionRepository;
   late FoodRecognitionReducer foodRecognitionReducer;
 
   setUp(() {
-    mockFoodRecognitionGateway = MockFoodRecognitionGateway();
+    mockFoodRecognitionRepository = MockFoodRecognitionRepository();
     foodRecognitionReducer = FoodRecognitionReducer(
-      foodRecognitionGateway: mockFoodRecognitionGateway,
+      foodRecognitionRepository: mockFoodRecognitionRepository,
     );
   });
 
   group('Food Recognition Reducer |', () {
     group('getImageRecognition success |', () {
       void setUpMockGeFoodRecognitionSuccess() {
-        when(() => mockFoodRecognitionGateway.getImageRecognition(any())).thenAnswer(
+        when(() => mockFoodRecognitionRepository.getImageRecognition(any())).thenAnswer(
           (_) async => Result.success(foodRecognitionDomain.toImmutableList()),
         );
       }
@@ -50,7 +50,7 @@ void main() {
         () async {
           setUpMockGeFoodRecognitionSuccess();
           await foodRecognitionReducer.getFoodRecognition('');
-          verify(() => mockFoodRecognitionGateway.getImageRecognition(any())).called(1);
+          verify(() => mockFoodRecognitionRepository.getImageRecognition(any())).called(1);
           expect(
             foodRecognitionState.value,
             equals(
@@ -66,7 +66,7 @@ void main() {
 
     group('getImageRecognition Failure |', () {
       void setUpMockGeFoodRecognitionFailure() {
-        when(() => mockFoodRecognitionGateway.getImageRecognition(any())).thenAnswer(
+        when(() => mockFoodRecognitionRepository.getImageRecognition(any())).thenAnswer(
           (_) async => Result.failure(const ResponseHttpFailure()),
         );
       }
@@ -88,7 +88,7 @@ void main() {
         () async {
           setUpMockGeFoodRecognitionFailure();
           await foodRecognitionReducer.getFoodRecognition('');
-          verify(() => mockFoodRecognitionGateway.getImageRecognition(any())).called(1);
+          verify(() => mockFoodRecognitionRepository.getImageRecognition(any())).called(1);
           expect(
             foodRecognitionState.value,
             equals(const FoodRecognitionFailureState(failure: ResponseHttpFailure())),

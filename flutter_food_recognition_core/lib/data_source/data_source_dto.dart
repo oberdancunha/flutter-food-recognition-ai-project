@@ -1,5 +1,5 @@
-import 'package:flutter_food_recognition/domain/entities/food_recognition.dart';
+import 'package:flutter_food_recognition/infra/repository/food_recognition_dto.dart';
 
 abstract interface class DataSourceDto {
-  List<FoodRecognition> toFoodRecognitionDomain(Map<String, dynamic> dataSourceImageRecognition);
+  List<FoodRecognitionDto> toFoodRecognitionDto(Map<String, dynamic> dataSourceImageRecognition);
 }

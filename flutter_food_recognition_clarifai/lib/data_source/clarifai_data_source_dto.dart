@@ -1,19 +1,21 @@
-import 'package:flutter_food_recognition/domain/entities/food_recognition.dart';
+import 'package:flutter_food_recognition/infra/repository/food_recognition_dto.dart';
 import 'package:flutter_food_recognition_core/data_source/data_source_dto.dart';
 
 class ClarifaiDataSourceDto implements DataSourceDto {
   @override
-  List<FoodRecognition> toFoodRecognitionDomain(Map<dynamic, dynamic> dataSourceImageRecognition) {
+  List<FoodRecognitionDto> toFoodRecognitionDto(
+    Map<String, dynamic> dataSourceImageRecognition,
+  ) {
     try {
-      final foodRecognition = <FoodRecognition>[];
+      final foodRecognitionDto = <FoodRecognitionDto>[];
       final output = _getDataFromOutputKey(dataSourceImageRecognition);
       final data = _getDataFromDataKey(output);
       final concepts = _getDataListFromConceptsKey(data);
       for (final concept in concepts) {
         final (name, value) = _getNameAndValueFromConceptKey(concept as Map<dynamic, dynamic>);
         if (name.isNotEmpty && value > 0) {
-          foodRecognition.add(
-            FoodRecognition(
+          foodRecognitionDto.add(
+            FoodRecognitionDto(
               name: name,
               score: value,
             ),
@@ -21,7 +23,7 @@ class ClarifaiDataSourceDto implements DataSourceDto {
         }
       }
 
-      return foodRecognition;
+      return foodRecognitionDto;
     } on Exception catch (_) {
       return [];
     }

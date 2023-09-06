@@ -1,7 +1,7 @@
 import 'package:flutter_food_recognition_clarifai/data_source/clarifai_data_source_dto.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import '../../../flutter_food_recognition/test/data/food_recognition_domain_example.dart';
+import '../../../flutter_food_recognition/test/data/food_recognition_dto_example.dart';
 import '../data/image_recognition_data_example.dart';
 
 void main() {
@@ -18,9 +18,9 @@ void main() {
           'Should return FoodRecognition domain list when image recognized by clarifai',
           () {
             final foodRecognition =
-                clarifaiDataSourceDto.toFoodRecognitionDomain(imageRecognitionDataResponse);
+                clarifaiDataSourceDto.toFoodRecognitionDto(imageRecognitionDataResponse);
 
-            expect(foodRecognition, equals(foodRecognitionDomain));
+            expect(foodRecognition, equals(foodRecognitionDtoExample));
           },
         );
       });
@@ -32,7 +32,7 @@ void main() {
             final input = {
               "outputs": [],
             };
-            final foodRecognition = clarifaiDataSourceDto.toFoodRecognitionDomain(input);
+            final foodRecognition = clarifaiDataSourceDto.toFoodRecognitionDto(input);
             expect(foodRecognition.length, isZero);
             expect(foodRecognition, equals([]));
           },
@@ -48,7 +48,7 @@ void main() {
                 },
               ],
             };
-            final foodRecognition = clarifaiDataSourceDto.toFoodRecognitionDomain(input);
+            final foodRecognition = clarifaiDataSourceDto.toFoodRecognitionDto(input);
             expect(foodRecognition.length, isZero);
             expect(foodRecognition, equals([]));
           },
@@ -66,7 +66,7 @@ void main() {
                 },
               ],
             };
-            final foodRecognition = clarifaiDataSourceDto.toFoodRecognitionDomain(input);
+            final foodRecognition = clarifaiDataSourceDto.toFoodRecognitionDto(input);
             expect(foodRecognition.length, isZero);
             expect(foodRecognition, equals([]));
           },
@@ -87,7 +87,7 @@ void main() {
                 },
               ],
             };
-            final foodRecognition = clarifaiDataSourceDto.toFoodRecognitionDomain(input);
+            final foodRecognition = clarifaiDataSourceDto.toFoodRecognitionDto(input);
             expect(foodRecognition.length, isZero);
             expect(foodRecognition, equals([]));
           },
