@@ -2,15 +2,23 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_food_recognition/infra/gateway/food_recognition_gateway.dart';
+import 'package:flutter_food_recognition/infra/repository/food_recognition_repository.dart';
 import 'package:flutter_food_recognition_app/presentation/core/app_module.dart';
 import 'package:flutter_food_recognition_app/presentation/core/app_widget.dart';
+import 'package:flutter_food_recognition_app/presentation/food_recognition/main/image_choosed_widget.dart';
 import 'package:flutter_food_recognition_app/presentation/food_recognition/main/main.page.dart';
 import 'package:flutter_food_recognition_app/presentation/food_recognition/main/main_body_widget.dart';
+import 'package:flutter_food_recognition_app/presentation/food_recognition/main/main_image_widget.dart';
+import 'package:flutter_food_recognition_app/presentation/food_recognition/main/main_title_widget.dart';
 import 'package:flutter_food_recognition_app/presentation/food_recognition/widgets/food_recognition_body_widget.dart';
 import 'package:flutter_food_recognition_app/presentation/food_recognition/widgets/image_source/image_source_choose_widget.dart';
+import 'package:flutter_food_recognition_app/presentation/food_recognition/widgets/scanner_image/scanner_animation_widget.dart';
 import 'package:flutter_food_recognition_app/presentation/food_recognition/widgets/search/food_recognition_error_widget.dart';
 import 'package:flutter_food_recognition_app/presentation/food_recognition/widgets/search/food_recognition_loading_widget.dart';
+import 'package:flutter_food_recognition_app/presentation/food_recognition/widgets/search/result/food_recognition_result_background_widget.dart';
+import 'package:flutter_food_recognition_app/presentation/food_recognition/widgets/search/result/food_recognition_result_data_widget.dart';
+import 'package:flutter_food_recognition_app/presentation/food_recognition/widgets/search/result/food_recognition_result_image_widget.dart';
+import 'package:flutter_food_recognition_app/presentation/food_recognition/widgets/search/result/food_recognition_result_ingredient_widget.dart';
 import 'package:flutter_food_recognition_app/presentation/food_recognition/widgets/search/result/food_recognition_result_widget.dart';
 import 'package:flutter_food_recognition_core/failure/core_failures.dart';
 import 'package:flutter_food_recognition_dependency_module/flutter_food_recognition_dependency_module.dart';
@@ -20,20 +28,20 @@ import 'package:mocktail/mocktail.dart';
 
 import '../../flutter_food_recognition/test/data/food_recognition_domain_example.dart';
 
-class MockFoodRecognitionGateway extends Mock implements FoodRecognitionGateway {}
+class MockFoodRecognitionRepository extends Mock implements FoodRecognitionRepository {}
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
-  late MockFoodRecognitionGateway mockFoodRecognitionGateway;
+  late MockFoodRecognitionRepository mockFoodRecognitionRepository;
 
   setUpAll(() {
     registerFallbackValue(ImageSource.gallery);
     ImagePickerPlatform.instance = FakeImagePicker();
-    mockFoodRecognitionGateway = MockFoodRecognitionGateway();
+    mockFoodRecognitionRepository = MockFoodRecognitionRepository();
     Modular
       ..init(AppModule())
       ..bindModule(AppModule())
-      ..replaceInstance<FoodRecognitionGateway>(mockFoodRecognitionGateway);
+      ..replaceInstance<FoodRecognitionRepository>(mockFoodRecognitionRepository);
   });
 
   Future<void> mainBodyApp(WidgetTester tester) async {
@@ -47,15 +55,21 @@ void main() {
     );
     expect(find.byType(FoodRecognitionBodyWidget), findsOneWidget);
     expect(find.byType(MainBodyWidget), findsOneWidget);
+    expect(find.byType(MainTitleWidget), findsOneWidget);
+    expect(find.byType(MainImageWidget), findsOneWidget);
     await tester.pump(const Duration(seconds: 5));
     expect(find.byType(FoodRecognitionLoadingWidget), findsOneWidget);
+    expect(find.byType(MainTitleWidget), findsOneWidget);
+    expect(find.byType(CustomPaint), findsWidgets);
+    expect(find.byType(ImageChoosedWidget), findsOneWidget);
+    expect(find.byType(ScannerWidget), findsWidgets);
     await tester.pumpAndSettle();
   }
 
   testWidgets(
     'Should test main title, load and success widget when gallery image is successfully recognized',
     (tester) async {
-      when(() => mockFoodRecognitionGateway.getImageRecognition(any())).thenAnswer((_) async {
+      when(() => mockFoodRecognitionRepository.getImageRecognition(any())).thenAnswer((_) async {
         await Future.delayed(const Duration(seconds: 5));
 
         return Result.success(foodRecognitionDomain.toImmutableList());
@@ -63,6 +77,12 @@ void main() {
 
       await mainBodyApp(tester);
       expect(find.byType(FoodRecognitionResultWidget), findsOneWidget);
+      expect(find.byType(MainTitleWidget), findsOneWidget);
+      expect(find.byType(FoodRecognitionResultBackgroundWidget), findsOneWidget);
+      expect(find.byType(FoodRecognitionResultImageWidget), findsOneWidget);
+      expect(find.byType(ImageChoosedWidget), findsOneWidget);
+      expect(find.byType(FoodRecognitionResultDataWidget), findsOneWidget);
+      expect(find.byType(FoodRecognitionResultIngredientWidget), findsWidgets);
       expect(find.byType(FoodRecognitionErrorWidget), findsNothing);
     },
   );
@@ -70,7 +90,7 @@ void main() {
   testWidgets(
     'Should main title, load and success widget when gallery image is not successfully recognized',
     (tester) async {
-      when(() => mockFoodRecognitionGateway.getImageRecognition(any())).thenAnswer((_) async {
+      when(() => mockFoodRecognitionRepository.getImageRecognition(any())).thenAnswer((_) async {
         await Future.delayed(const Duration(seconds: 5));
 
         return Result.failure(const UnexpectedHttpFailure());
