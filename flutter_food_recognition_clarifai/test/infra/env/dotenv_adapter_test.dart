@@ -78,7 +78,7 @@ void main() {
       late DotEnvAdapter dotEnvAdapter;
 
       setUpAll(() {
-        dotEnvAdapter = DotEnvAdapter();
+        dotEnvAdapter = DotEnvAdapter(fileName: '.env');
       });
 
       test('Should return CLARIFAI_BASE_URL', () {

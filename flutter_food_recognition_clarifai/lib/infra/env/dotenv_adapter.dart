@@ -7,14 +7,18 @@ import 'env.dart';
 
 class DotEnvAdapter implements Env {
   late DotEnv? _env;
+  late final String? _fileName;
 
-  DotEnvAdapter({DotEnv? env}) {
-    _env = env;
+  DotEnvAdapter({
+    DotEnv? env,
+    String? fileName,
+  })  : _env = env,
+        _fileName = fileName {
     _init();
   }
 
   Future<void> _init() async {
-    const fileName = 'packages/flutter_food_recognition_clarifai/.env';
+    final fileName = _fileName ?? 'packages/flutter_food_recognition_clarifai/.env';
     if (_env == null) {
       _env = DotEnv();
       _env!.load(fileName: fileName);
