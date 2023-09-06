@@ -24,12 +24,15 @@ class FoodRecognitionResultDataWidget extends StatelessWidget {
                 runSpacing: 5,
                 children: [
                   for (int index = 0; index < foodRecognitionList.size; index++) ...[
-                    if (foodsEnglishToPortuguese[foodRecognitionList.elementAt(index).name] != null)
+                    if (foodsEnglishToPortuguese[
+                            foodRecognitionList.elementAt(index).name.getOrError()] !=
+                        null)
                       FoodRecognitionResultIngredientWidget(
-                        originalIngredientName: foodRecognitionList.elementAt(index).name,
-                        ingredientName:
-                            foodsEnglishToPortuguese[foodRecognitionList.elementAt(index).name]
-                                .toString(),
+                        originalIngredientName:
+                            foodRecognitionList.elementAt(index).name.getOrError(),
+                        ingredientName: foodsEnglishToPortuguese[
+                                foodRecognitionList.elementAt(index).name.getOrError()]
+                            .toString(),
                       ),
                   ],
                 ],

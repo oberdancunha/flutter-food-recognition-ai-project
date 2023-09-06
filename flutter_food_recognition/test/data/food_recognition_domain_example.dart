@@ -1,84 +1,85 @@
+import 'package:flutter_food_recognition/domain/core/food_recognition_name_value_object.dart';
 import 'package:flutter_food_recognition/domain/entities/food_recognition.dart';
 
 final foodRecognitionDomain = [
-  const FoodRecognition(
-    name: 'food',
+  FoodRecognition(
+    name: FoodRecognitionNameValueObject('food'),
     score: 0.9863696,
   ),
-  const FoodRecognition(
-    name: 'dinner',
+  FoodRecognition(
+    name: FoodRecognitionNameValueObject('dinner'),
     score: 0.9808899,
   ),
-  const FoodRecognition(
-    name: 'lunch',
+  FoodRecognition(
+    name: FoodRecognitionNameValueObject('lunch'),
     score: 0.97744787,
   ),
-  const FoodRecognition(
-    name: 'meal',
+  FoodRecognition(
+    name: FoodRecognitionNameValueObject('meal'),
     score: 0.97499883,
   ),
-  const FoodRecognition(
-    name: 'plate',
+  FoodRecognition(
+    name: FoodRecognitionNameValueObject('plate'),
     score: 0.96617514,
   ),
-  const FoodRecognition(
-    name: 'healthy',
+  FoodRecognition(
+    name: FoodRecognitionNameValueObject('healthy'),
     score: 0.9615104,
   ),
-  const FoodRecognition(
-    name: 'cuisine',
+  FoodRecognition(
+    name: FoodRecognitionNameValueObject('cuisine'),
     score: 0.9591295,
   ),
-  const FoodRecognition(
-    name: 'meat',
+  FoodRecognition(
+    name: FoodRecognitionNameValueObject('meat'),
     score: 0.9525125,
   ),
-  const FoodRecognition(
-    name: 'dish',
+  FoodRecognition(
+    name: FoodRecognitionNameValueObject('dish'),
     score: 0.9504456,
   ),
-  const FoodRecognition(
-    name: 'restaurant',
+  FoodRecognition(
+    name: FoodRecognitionNameValueObject('restaurant'),
     score: 0.941705,
   ),
-  const FoodRecognition(
-    name: 'vegetable',
+  FoodRecognition(
+    name: FoodRecognitionNameValueObject('vegetable'),
     score: 0.93890077,
   ),
-  const FoodRecognition(
-    name: 'nutrition',
+  FoodRecognition(
+    name: FoodRecognitionNameValueObject('nutrition'),
     score: 0.9367554,
   ),
-  const FoodRecognition(
-    name: 'tomato',
+  FoodRecognition(
+    name: FoodRecognitionNameValueObject('tomato'),
     score: 0.9336903,
   ),
-  const FoodRecognition(
-    name: 'tasty',
+  FoodRecognition(
+    name: FoodRecognitionNameValueObject('tasty'),
     score: 0.92548764,
   ),
-  const FoodRecognition(
-    name: 'hot',
+  FoodRecognition(
+    name: FoodRecognitionNameValueObject('hot'),
     score: 0.92236847,
   ),
-  const FoodRecognition(
-    name: 'desktop',
+  FoodRecognition(
+    name: FoodRecognitionNameValueObject('desktop'),
     score: 0.9214418,
   ),
-  const FoodRecognition(
-    name: 'diet',
+  FoodRecognition(
+    name: FoodRecognitionNameValueObject('diet'),
     score: 0.9155479,
   ),
-  const FoodRecognition(
-    name: 'sauce',
+  FoodRecognition(
+    name: FoodRecognitionNameValueObject('sauce'),
     score: 0.9141822,
   ),
-  const FoodRecognition(
-    name: 'cooking',
+  FoodRecognition(
+    name: FoodRecognitionNameValueObject('cooking'),
     score: 0.90959597,
   ),
-  const FoodRecognition(
-    name: 'beef',
+  FoodRecognition(
+    name: FoodRecognitionNameValueObject('beef'),
     score: 0.90578556,
   ),
 ];
