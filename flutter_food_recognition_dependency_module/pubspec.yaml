@@ -18,3 +18,4 @@ dependencies:
   result_dart: ^1.1.0
   shimmer: ^3.0.0
   uno: ^1.1.9
+  uuid: ^3.0.7

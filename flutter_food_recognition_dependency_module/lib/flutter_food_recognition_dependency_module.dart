@@ -12,3 +12,4 @@ export 'package:path_provider/path_provider.dart';
 export 'package:result_dart/result_dart.dart';
 export 'package:shimmer/shimmer.dart';
 export 'package:uno/uno.dart';
+export 'package:uuid/uuid.dart';
