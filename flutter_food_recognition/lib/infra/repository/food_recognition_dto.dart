@@ -1,5 +1,6 @@
 import 'package:flutter_food_recognition_dependency_module/flutter_food_recognition_dependency_module.dart';
 
+import '../../domain/core/food_recognition_id_value_object.dart';
 import '../../domain/core/food_recognition_name_value_object.dart';
 import '../../domain/entities/food_recognition.dart';
 
@@ -13,6 +14,7 @@ class FoodRecognitionDto extends Equatable {
   });
 
   FoodRecognition toDomain() => FoodRecognition(
+        id: FoodRecognitionIdValueObject(),
         name: FoodRecognitionNameValueObject(name),
         score: score,
       );
