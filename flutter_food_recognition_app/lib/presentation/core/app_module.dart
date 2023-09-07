@@ -1,3 +1,4 @@
+import 'package:flutter_food_recognition/application/food_recognition_reducer.dart';
 import 'package:flutter_food_recognition/module/food_recognition_module.dart';
 import 'package:flutter_food_recognition_clarifai/module/food_recognition_clarifai_module.dart';
 import 'package:flutter_food_recognition_core/module/food_recognition_core_module.dart';
@@ -17,7 +18,9 @@ class AppModule extends Module {
   void routes(RouteManager r) {
     r.child(
       '/',
-      child: (_) => const MainPage(),
+      child: (_) => MainPage(
+        foodRecognitionReducer: Modular.get<FoodRecognitionReducer>(),
+      ),
     );
     super.routes(r);
   }

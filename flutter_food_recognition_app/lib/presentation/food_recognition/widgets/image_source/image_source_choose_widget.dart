@@ -9,14 +9,18 @@ import 'image_source_item.dart';
 import 'image_source_option_widget.dart';
 
 class ImageSourceChooseWidget extends StatefulWidget {
-  const ImageSourceChooseWidget({super.key});
+  final FoodRecognitionReducer foodRecognitionReducer;
+
+  const ImageSourceChooseWidget({
+    required this.foodRecognitionReducer,
+    super.key,
+  });
 
   @override
   State<ImageSourceChooseWidget> createState() => _ImageSourceChooseWidgetState();
 }
 
 class _ImageSourceChooseWidgetState extends State<ImageSourceChooseWidget> {
-  late final _foodRecognitionReducer = Modular.get<FoodRecognitionReducer>();
   late List<ImageSourceItem> _imageSourceItem;
   late int _bottomNavigationOptionIndex;
   late ImagePicker _picker;
@@ -69,7 +73,7 @@ class _ImageSourceChooseWidgetState extends State<ImageSourceChooseWidget> {
                   if (image != null) {
                     final bytesImage = await io.File(image.path).readAsBytes();
                     final base64Image = base64Encode(bytesImage);
-                    _foodRecognitionReducer.getFoodRecognition(base64Image);
+                    widget.foodRecognitionReducer.getFoodRecognition(base64Image);
                   }
                 },
               ),
