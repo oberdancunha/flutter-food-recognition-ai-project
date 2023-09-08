@@ -26,7 +26,10 @@ class ImageSourceOptionWidget extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Image.asset(image),
+                Padding(
+                  padding: const EdgeInsets.all(5),
+                  child: Image.asset(image),
+                ),
                 Text(
                   title,
                   style: TextStyle(

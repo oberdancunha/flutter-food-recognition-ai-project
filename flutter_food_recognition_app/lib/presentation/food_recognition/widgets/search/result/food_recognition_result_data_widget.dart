@@ -16,7 +16,10 @@ class FoodRecognitionResultDataWidget extends StatelessWidget {
   Widget build(BuildContext context) => Positioned.fill(
         top: MediaQuery.sizeOf(context).height * 0.35,
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: MediaQuery.sizeOf(context).height * 0.03),
+          padding: EdgeInsets.only(
+            top: MediaQuery.sizeOf(context).height * 0.03,
+            bottom: MediaQuery.sizeOf(context).height * 0.018,
+          ),
           child: SingleChildScrollView(
             child: Center(
               child: Wrap(

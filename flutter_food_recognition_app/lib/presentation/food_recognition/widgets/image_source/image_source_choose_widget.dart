@@ -48,7 +48,7 @@ class _ImageSourceChooseWidgetState extends State<ImageSourceChooseWidget> {
 
   @override
   Widget build(BuildContext context) => SizedBox(
-        height: MediaQuery.sizeOf(context).height * 0.12,
+        height: MediaQuery.sizeOf(context).height * 0.095,
         width: MediaQuery.sizeOf(context).width,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
