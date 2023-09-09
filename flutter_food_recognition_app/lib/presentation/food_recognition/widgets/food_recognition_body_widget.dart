@@ -22,11 +22,11 @@ class FoodRecognitionBodyWidget extends StatelessWidget {
         ),
       FoodRecognitionSuccessState(
         base64Image: final base64Image,
-        foodRecognitionList: final foodRecognitionList
+        foodRecognitionIngredients: final foodRecognition
       ) =>
         FoodRecognitionResultWidget(
           base64Image: base64Image,
-          foodRecognitionList: foodRecognitionList,
+          foodRecognitionIngredients: foodRecognition.ingredients,
         ),
       FoodRecognitionFailureState() => const FoodRecognitionErrorWidget(),
     };

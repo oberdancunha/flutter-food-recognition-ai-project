@@ -1,9 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/foundation.dart';
 import 'package:flutter_food_recognition_core/failure/core_failures.dart';
-import 'package:flutter_food_recognition_dependency_module/flutter_food_recognition_dependency_module.dart';
 
-import '../domain/entities/food_recognition.dart';
+import '../domain/entities/food_recognition_ingredients.dart';
 
 sealed class FoodRecognitionState {
   const FoodRecognitionState();
@@ -22,11 +21,11 @@ class FoodRecognitionLoadingState extends FoodRecognitionState {
 @immutable
 class FoodRecognitionSuccessState extends FoodRecognitionState {
   final String base64Image;
-  final KtList<FoodRecognition> foodRecognitionList;
+  final FoodRecognitionIngredients foodRecognitionIngredients;
 
   const FoodRecognitionSuccessState({
     required this.base64Image,
-    required this.foodRecognitionList,
+    required this.foodRecognitionIngredients,
   });
 
   @override
@@ -35,11 +34,11 @@ class FoodRecognitionSuccessState extends FoodRecognitionState {
       return true;
     }
 
-    return other.foodRecognitionList == foodRecognitionList;
+    return other.foodRecognitionIngredients == foodRecognitionIngredients;
   }
 
   @override
-  int get hashCode => foodRecognitionList.hashCode;
+  int get hashCode => foodRecognitionIngredients.hashCode;
 }
 
 @immutable

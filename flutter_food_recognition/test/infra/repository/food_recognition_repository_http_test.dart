@@ -1,5 +1,5 @@
 import 'package:flutter_food_recognition/data_source/food_recognition_data_source_http.dart';
-import 'package:flutter_food_recognition/domain/entities/food_recognition.dart';
+import 'package:flutter_food_recognition/domain/entities/food_recognition_ingredients.dart';
 import 'package:flutter_food_recognition/infra/repository/food_recognition_repository_http.dart';
 import 'package:flutter_food_recognition_core/failure/core_exceptions.dart';
 import 'package:flutter_food_recognition_core/failure/core_failures.dart';
@@ -110,8 +110,8 @@ void main() {
             expect(
               foodRecognition,
               equals(
-                Result<KtList<FoodRecognition>, CoreFailure>.success(
-                  foodRecognitionDomain.toImmutableList(),
+                Result<FoodRecognitionIngredients, CoreFailure>.success(
+                  FoodRecognitionIngredients(foodRecognitionDomain),
                 ),
               ),
             );

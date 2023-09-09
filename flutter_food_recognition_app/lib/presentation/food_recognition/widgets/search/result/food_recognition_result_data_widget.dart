@@ -4,12 +4,13 @@ import 'package:flutter_food_recognition/utils/foods.dart';
 import 'package:flutter_food_recognition_dependency_module/flutter_food_recognition_dependency_module.dart';
 
 import 'food_recognition_result_ingredient_widget.dart';
+import 'food_recognition_result_no_ingredient_widget.dart';
 
 class FoodRecognitionResultDataWidget extends StatelessWidget {
-  final KtList<FoodRecognition> foodRecognitionList;
+  final KtList<FoodRecognition> foodRecognitionIngredients;
 
   const FoodRecognitionResultDataWidget({
-    required this.foodRecognitionList,
+    required this.foodRecognitionIngredients,
   });
 
   @override
@@ -22,24 +23,23 @@ class FoodRecognitionResultDataWidget extends StatelessWidget {
           ),
           child: SingleChildScrollView(
             child: Center(
-              child: Wrap(
-                spacing: 3,
-                runSpacing: 5,
-                children: [
-                  for (int index = 0; index < foodRecognitionList.size; index++) ...[
-                    if (foodsEnglishToPortuguese[
-                            foodRecognitionList.elementAt(index).name.getOrError()] !=
-                        null)
-                      FoodRecognitionResultIngredientWidget(
-                        originalIngredientName:
-                            foodRecognitionList.elementAt(index).name.getOrError(),
-                        ingredientName: foodsEnglishToPortuguese[
-                                foodRecognitionList.elementAt(index).name.getOrError()]
-                            .toString(),
-                      ),
-                  ],
-                ],
-              ),
+              child: foodRecognitionIngredients.size > 0
+                  ? Wrap(
+                      spacing: 3,
+                      runSpacing: 5,
+                      children: [
+                        for (int index = 0; index < foodRecognitionIngredients.size; index++) ...[
+                          FoodRecognitionResultIngredientWidget(
+                            originalIngredientName:
+                                foodRecognitionIngredients.elementAt(index).name.getOrError(),
+                            ingredientName: foodsEnglishToPortuguese[
+                                    foodRecognitionIngredients.elementAt(index).name.getOrError()]
+                                .toString(),
+                          ),
+                        ],
+                      ],
+                    )
+                  : const FoodRecognitionNoIngredientWidget(),
             ),
           ),
         ),

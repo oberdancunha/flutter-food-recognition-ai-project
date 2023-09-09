@@ -1,6 +1,7 @@
 import 'package:flutter_food_recognition/application/food_recognition_atom.dart';
 import 'package:flutter_food_recognition/application/food_recognition_reducer.dart';
 import 'package:flutter_food_recognition/application/food_recognition_state.dart';
+import 'package:flutter_food_recognition/domain/entities/food_recognition_ingredients.dart';
 import 'package:flutter_food_recognition/infra/repository/food_recognition_repository.dart';
 import 'package:flutter_food_recognition_core/failure/core_failures.dart';
 import 'package:flutter_food_recognition_dependency_module/flutter_food_recognition_dependency_module.dart';
@@ -26,7 +27,7 @@ void main() {
     group('getImageRecognition success |', () {
       void setUpMockGeFoodRecognitionSuccess() {
         when(() => mockFoodRecognitionRepository.getImageRecognition(any())).thenAnswer(
-          (_) async => Result.success(foodRecognitionDomain.toImmutableList()),
+          (_) async => Result.success(FoodRecognitionIngredients(foodRecognitionDomain)),
         );
       }
 
@@ -56,7 +57,7 @@ void main() {
             equals(
               FoodRecognitionSuccessState(
                 base64Image: '',
-                foodRecognitionList: foodRecognitionDomain.toImmutableList(),
+                foodRecognitionIngredients: FoodRecognitionIngredients(foodRecognitionDomain),
               ),
             ),
           );

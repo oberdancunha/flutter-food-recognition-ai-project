@@ -7,6 +7,8 @@ abstract class ValueObjects<T extends Object> {
 
   T getOrError() => value.getOrThrow();
 
+  bool isValid() => value.isSuccess();
+
   @override
   bool operator ==(covariant ValueObjects<T> other) {
     if (identical(this, other)) {

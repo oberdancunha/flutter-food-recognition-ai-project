@@ -12,11 +12,11 @@ import 'food_recognition_result_data_widget.dart';
 import 'food_recognition_result_image_widget.dart';
 
 class FoodRecognitionResultWidget extends StatelessWidget {
-  final KtList<FoodRecognition> foodRecognitionList;
+  final KtList<FoodRecognition> foodRecognitionIngredients;
   final String base64Image;
 
   const FoodRecognitionResultWidget({
-    required this.foodRecognitionList,
+    required this.foodRecognitionIngredients,
     required this.base64Image,
     super.key,
   });
@@ -52,7 +52,7 @@ class FoodRecognitionResultWidget extends StatelessWidget {
             top: MediaQuery.sizeOf(context).height * 0.08,
             child: FoodRecognitionResultImageWidget(base64Image: base64Image),
           ),
-          FoodRecognitionResultDataWidget(foodRecognitionList: foodRecognitionList),
+          FoodRecognitionResultDataWidget(foodRecognitionIngredients: foodRecognitionIngredients),
         ],
       ),
     );

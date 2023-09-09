@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_food_recognition/domain/entities/food_recognition_ingredients.dart';
 import 'package:flutter_food_recognition/infra/repository/food_recognition_repository.dart';
 import 'package:flutter_food_recognition_app/presentation/core/app_module.dart';
 import 'package:flutter_food_recognition_app/presentation/core/app_widget.dart';
@@ -72,7 +73,7 @@ void main() {
       when(() => mockFoodRecognitionRepository.getImageRecognition(any())).thenAnswer((_) async {
         await Future.delayed(const Duration(seconds: 5));
 
-        return Result.success(foodRecognitionDomain.toImmutableList());
+        return Result.success(FoodRecognitionIngredients(foodRecognitionDomain));
       });
 
       await mainBodyApp(tester);
