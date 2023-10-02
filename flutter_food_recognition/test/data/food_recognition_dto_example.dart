@@ -2,83 +2,83 @@ import 'package:flutter_food_recognition/infra/repository/food_recognition_dto.d
 
 final foodRecognitionDtoExample = [
   const FoodRecognitionDto(
-    name: 'food',
-    score: 0.9863696,
+    name: 'no person',
+    score: 0.9970139,
   ),
   const FoodRecognitionDto(
     name: 'dinner',
-    score: 0.9808899,
-  ),
-  const FoodRecognitionDto(
-    name: 'lunch',
-    score: 0.97744787,
-  ),
-  const FoodRecognitionDto(
-    name: 'meal',
-    score: 0.97499883,
-  ),
-  const FoodRecognitionDto(
-    name: 'plate',
-    score: 0.96617514,
-  ),
-  const FoodRecognitionDto(
-    name: 'healthy',
-    score: 0.9615104,
-  ),
-  const FoodRecognitionDto(
-    name: 'cuisine',
-    score: 0.9591295,
-  ),
-  const FoodRecognitionDto(
-    name: 'meat',
-    score: 0.9525125,
-  ),
-  const FoodRecognitionDto(
-    name: 'dish',
-    score: 0.9504456,
-  ),
-  const FoodRecognitionDto(
-    name: 'restaurant',
-    score: 0.941705,
-  ),
-  const FoodRecognitionDto(
-    name: 'vegetable',
-    score: 0.93890077,
-  ),
-  const FoodRecognitionDto(
-    name: 'nutrition',
-    score: 0.9367554,
-  ),
-  const FoodRecognitionDto(
-    name: 'tomato',
-    score: 0.9336903,
-  ),
-  const FoodRecognitionDto(
-    name: 'tasty',
-    score: 0.92548764,
-  ),
-  const FoodRecognitionDto(
-    name: 'hot',
-    score: 0.92236847,
-  ),
-  const FoodRecognitionDto(
-    name: 'desktop',
-    score: 0.9214418,
-  ),
-  const FoodRecognitionDto(
-    name: 'diet',
-    score: 0.9155479,
-  ),
-  const FoodRecognitionDto(
-    name: 'sauce',
-    score: 0.9141822,
-  ),
-  const FoodRecognitionDto(
-    name: 'cooking',
-    score: 0.90959597,
+    score: 0.98730475,
   ),
   const FoodRecognitionDto(
     name: 'beef',
-    score: 0.90578556,
+    score: 0.98414236,
+  ),
+  const FoodRecognitionDto(
+    name: 'lunch',
+    score: 0.9818044,
+  ),
+  const FoodRecognitionDto(
+    name: 'food',
+    score: 0.97999346,
+  ),
+  const FoodRecognitionDto(
+    name: 'french fries',
+    score: 0.97421426,
+  ),
+  const FoodRecognitionDto(
+    name: 'meat',
+    score: 0.9669458,
+  ),
+  const FoodRecognitionDto(
+    name: 'delicious',
+    score: 0.95826495,
+  ),
+  const FoodRecognitionDto(
+    name: 'pork',
+    score: 0.95417833,
+  ),
+  const FoodRecognitionDto(
+    name: 'lamb',
+    score: 0.9479489,
+  ),
+  const FoodRecognitionDto(
+    name: 'rice',
+    score: 0.938121,
+  ),
+  const FoodRecognitionDto(
+    name: 'meal',
+    score: 0.928849,
+  ),
+  const FoodRecognitionDto(
+    name: 'chicken',
+    score: 0.8962893,
+  ),
+  const FoodRecognitionDto(
+    name: 'dish',
+    score: 0.893656,
+  ),
+  const FoodRecognitionDto(
+    name: 'nutrition',
+    score: 0.8905797,
+  ),
+  const FoodRecognitionDto(
+    name: 'potato',
+    score: 0.8893758,
+  ),
+  const FoodRecognitionDto(
+    name: 'vegetable',
+    score: 0.8842077,
+  ),
+  const FoodRecognitionDto(
+    name: 'traditional',
+    score: 0.8788228,
+  ),
+  const FoodRecognitionDto(
+    name: 'plate',
+    score: 0.8759022,
+  ),
+  const FoodRecognitionDto(
+    name: 'pepper',
+    score: 0.8605903,
   ),
 ];

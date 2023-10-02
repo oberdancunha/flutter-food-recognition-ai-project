@@ -14,12 +14,14 @@ import 'package:flutter_food_recognition_app/presentation/food_recognition/main/
 import 'package:flutter_food_recognition_app/presentation/food_recognition/widgets/food_recognition_body_widget.dart';
 import 'package:flutter_food_recognition_app/presentation/food_recognition/widgets/image_source/image_source_choose_widget.dart';
 import 'package:flutter_food_recognition_app/presentation/food_recognition/widgets/scanner_image/scanner_animation_widget.dart';
-import 'package:flutter_food_recognition_app/presentation/food_recognition/widgets/search/food_recognition_error_widget.dart';
+import 'package:flutter_food_recognition_app/presentation/food_recognition/widgets/search/failure/food_recognition_failure_widget.dart';
+import 'package:flutter_food_recognition_app/presentation/food_recognition/widgets/search/failure/food_recognition_show_failure_widget.dart';
 import 'package:flutter_food_recognition_app/presentation/food_recognition/widgets/search/food_recognition_loading_widget.dart';
 import 'package:flutter_food_recognition_app/presentation/food_recognition/widgets/search/result/food_recognition_result_background_widget.dart';
 import 'package:flutter_food_recognition_app/presentation/food_recognition/widgets/search/result/food_recognition_result_data_widget.dart';
 import 'package:flutter_food_recognition_app/presentation/food_recognition/widgets/search/result/food_recognition_result_image_widget.dart';
 import 'package:flutter_food_recognition_app/presentation/food_recognition/widgets/search/result/food_recognition_result_ingredient_widget.dart';
+import 'package:flutter_food_recognition_app/presentation/food_recognition/widgets/search/result/food_recognition_result_no_ingredient_widget.dart';
 import 'package:flutter_food_recognition_app/presentation/food_recognition/widgets/search/result/food_recognition_result_widget.dart';
 import 'package:flutter_food_recognition_core/failure/core_failures.dart';
 import 'package:flutter_food_recognition_dependency_module/flutter_food_recognition_dependency_module.dart';
@@ -47,7 +49,7 @@ void main() {
 
   Future<void> mainBodyApp(WidgetTester tester) async {
     await tester.pumpWidget(const AppWidget());
-    await tester.pump();
+    await tester.pump(const Duration(seconds: 2));
     expect(find.byType(MainPage), findsOneWidget);
     expect(find.byType(RxRoot), findsOneWidget);
     expect(find.byType(ImageSourceChooseWidget), findsOneWidget);
@@ -67,41 +69,109 @@ void main() {
     await tester.pumpAndSettle();
   }
 
-  testWidgets(
-    'Should test main title, load and success widget when gallery image is successfully recognized',
-    (tester) async {
-      when(() => mockFoodRecognitionRepository.getImageRecognition(any())).thenAnswer((_) async {
-        await Future.delayed(const Duration(seconds: 5));
+  void setUpMockResult(Result<FoodRecognitionIngredients, CoreFailure> result) {
+    when(() => mockFoodRecognitionRepository.getImageRecognition(any())).thenAnswer(
+      (_) async {
+        await Future.delayed(const Duration(seconds: 10));
 
-        return Result.success(FoodRecognitionIngredients(foodRecognitionDomain));
-      });
+        return result;
+      },
+    );
+  }
 
-      await mainBodyApp(tester);
+  group('Search done |', () {
+    Future<void> setupMockSearchBody(WidgetTester tester) async {
       expect(find.byType(FoodRecognitionResultWidget), findsOneWidget);
+      await tester.pumpAndSettle(const Duration(seconds: 8));
       expect(find.byType(MainTitleWidget), findsOneWidget);
       expect(find.byType(FoodRecognitionResultBackgroundWidget), findsOneWidget);
       expect(find.byType(FoodRecognitionResultImageWidget), findsOneWidget);
       expect(find.byType(ImageChoosedWidget), findsOneWidget);
       expect(find.byType(FoodRecognitionResultDataWidget), findsOneWidget);
-      expect(find.byType(FoodRecognitionResultIngredientWidget), findsWidgets);
-      expect(find.byType(FoodRecognitionErrorWidget), findsNothing);
-    },
-  );
+      expect(find.byType(FoodRecognitionFailureWidget), findsNothing);
+    }
 
-  testWidgets(
-    'Should main title, load and success widget when gallery image is not successfully recognized',
-    (tester) async {
-      when(() => mockFoodRecognitionRepository.getImageRecognition(any())).thenAnswer((_) async {
-        await Future.delayed(const Duration(seconds: 5));
+    testWidgets(
+      'Should test main title, load and success widget when gallery image is successfully recognized',
+      (tester) async {
+        setUpMockResult(Result.success(FoodRecognitionIngredients(foodRecognitionDomain)));
+        await mainBodyApp(tester);
+        await setupMockSearchBody(tester);
+        expect(find.byType(FoodRecognitionResultIngredientWidget), findsWidgets);
+      },
+    );
 
-        return Result.failure(const UnexpectedHttpFailure());
-      });
+    testWidgets(
+      'Should main title, load and success widget when gallery image is not successfully recognized',
+      (tester) async {
+        setUpMockResult(Result.success(FoodRecognitionIngredients(List.empty())));
+        await mainBodyApp(tester);
+        await setupMockSearchBody(tester);
+        expect(find.byType(FoodRecognitionNoIngredientWidget), findsOneWidget);
+      },
+    );
+  });
 
+  group('Search failure |', () {
+    Future<void> failureBody(WidgetTester tester) async {
       await mainBodyApp(tester);
       expect(find.byType(FoodRecognitionResultWidget), findsNothing);
-      expect(find.byType(FoodRecognitionErrorWidget), findsOneWidget);
-    },
-  );
+      expect(find.byType(FoodRecognitionFailureWidget), findsOneWidget);
+      await tester.pumpAndSettle(const Duration(seconds: 8));
+      expect(find.byType(FoodRecognitionShowFailureWidget), findsOneWidget);
+      expect(find.byType(MainTitleWidget), findsOneWidget);
+    }
+
+    Future<void> verifyFailureImage(String imagePath) async {
+      await rootBundle.load(imagePath);
+      expect(
+        find.widgetWithImage(
+          SizedBox,
+          AssetImage(imagePath),
+        ),
+        findsOneWidget,
+      );
+    }
+
+    void verifyFailureMessage(String message) {
+      expect(
+        find.text(message),
+        findsOneWidget,
+      );
+    }
+
+    testWidgets('Should show connection failure screen', (tester) async {
+      setUpMockResult(Result.failure(const ConnectionFailure()));
+      await failureBody(tester);
+      await verifyFailureImage('assets/images/failure/connection_failure.png');
+      verifyFailureMessage('Por favor, verifique a conexão de internet do seu dispositivo.');
+    });
+
+    testWidgets('Should show authentication credentials failure screen', (tester) async {
+      setUpMockResult(Result.failure(const AuthenticationCredentialsFailure()));
+      await failureBody(tester);
+      await verifyFailureImage('assets/images/failure/authentication_credentials_failure.png');
+      verifyFailureMessage(
+        'Erro no acesso ao serviço de reconhecimento. Tente novamente, por favor.',
+      );
+    });
+
+    testWidgets('Should show unexpected http failure screen', (tester) async {
+      setUpMockResult(Result.failure(const UnexpectedHttpFailure()));
+      await failureBody(tester);
+      await verifyFailureImage('assets/images/failure/unexpected_http_failure.png');
+      verifyFailureMessage('Erro no serviço de reconhecimento. Tente novamente, por favor.');
+    });
+
+    testWidgets('Should show response http failure screen', (tester) async {
+      setUpMockResult(Result.failure(const ResponseHttpFailure()));
+      await failureBody(tester);
+      await verifyFailureImage('assets/images/failure/response_http_failure.png');
+      verifyFailureMessage(
+        'Erro no retorno das informações do serviço de reconhecimento. Tente novamente, por favor.',
+      );
+    });
+  });
 }
 
 class FakeImagePicker extends ImagePickerPlatform {
@@ -110,13 +180,13 @@ class FakeImagePicker extends ImagePickerPlatform {
     required ImageSource source,
     ImagePickerOptions options = const ImagePickerOptions(),
   }) async {
-    final imageFileData = await rootBundle.load('assets/images/food_image_example.jpeg');
+    final imageFileData = await rootBundle.load('assets/images/food_image_example.jpg');
     final bytes = imageFileData.buffer.asUint8List(
       imageFileData.offsetInBytes,
       imageFileData.lengthInBytes,
     );
     final Directory tmpDir = await getTemporaryDirectory();
-    final file = File('${tmpDir.path}food_image_example.jpeg');
+    final file = File('${tmpDir.path}food_image_example.jpg');
     await file.writeAsBytes(bytes);
 
     return XFile(source == ImageSource.camera ? 'cameraImage' : file.path);
