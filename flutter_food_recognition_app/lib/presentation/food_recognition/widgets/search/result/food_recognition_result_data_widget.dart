@@ -21,25 +21,35 @@ class FoodRecognitionResultDataWidget extends StatelessWidget {
             top: MediaQuery.sizeOf(context).height * 0.03,
             bottom: MediaQuery.sizeOf(context).height * 0.018,
           ),
-          child: SingleChildScrollView(
-            child: Center(
-              child: foodRecognitionIngredients.size > 0
-                  ? Wrap(
-                      spacing: 3,
-                      runSpacing: 5,
-                      children: [
-                        for (int index = 0; index < foodRecognitionIngredients.size; index++) ...[
-                          FoodRecognitionResultIngredientWidget(
-                            originalIngredientName:
-                                foodRecognitionIngredients.elementAt(index).name.getOrError(),
-                            ingredientName: foodsEnglishToPortuguese[
-                                    foodRecognitionIngredients.elementAt(index).name.getOrError()]
-                                .toString(),
-                          ),
-                        ],
-                      ],
-                    )
-                  : const FoodRecognitionNoIngredientWidget(),
+          child: Visibility(
+            visible: foodRecognitionIngredients.size > 0,
+            replacement: const FoodRecognitionNoIngredientWidget(),
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: MediaQuery.sizeOf(context).width * 0.02,
+              ),
+              child: GridView.builder(
+                gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                  maxCrossAxisExtent: MediaQuery.sizeOf(context).width * 0.35,
+                  childAspectRatio: MediaQuery.sizeOf(context).height * 0.0022,
+                  crossAxisSpacing: MediaQuery.sizeOf(context).width * 0.01,
+                  mainAxisSpacing: MediaQuery.sizeOf(context).height * 0.01,
+                ),
+                shrinkWrap: true,
+                itemCount: foodRecognitionIngredients.size,
+                physics: const BouncingScrollPhysics(),
+                padding: EdgeInsets.zero,
+                itemBuilder: (_, index) {
+                  final food = foodRecognitionIngredients.elementAt(index);
+
+                  return FoodRecognitionResultIngredientWidget(
+                    originalIngredientName: food.name.getOrError(),
+                    ingredientName: foodsEnglishToPortuguese[
+                            foodRecognitionIngredients.elementAt(index).name.getOrError()]
+                        .toString(),
+                  );
+                },
+              ),
             ),
           ),
         ),

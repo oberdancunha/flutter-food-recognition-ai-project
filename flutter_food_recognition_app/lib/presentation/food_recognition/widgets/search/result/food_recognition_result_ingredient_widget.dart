@@ -31,9 +31,7 @@ class _FoodRecognitionResultIngredientWidgetState
   Widget build(BuildContext context) {
     final ingredientThemeExtension = Theme.of(context).extension<IngredientThemeExtension>()!;
 
-    return Container(
-      height: MediaQuery.sizeOf(context).height * 0.12,
-      width: MediaQuery.sizeOf(context).width / 3.2,
+    return DecoratedBox(
       decoration: BoxDecoration(
         color: ingredientThemeExtension.backgroundColor,
         borderRadius: BorderRadius.circular(10),
