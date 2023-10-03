@@ -25,6 +25,7 @@ dev_dependencies:
     sdk: flutter
   lint: ^2.1.2
   mocktail: ^1.0.0
+  flutter_native_splash: ^2.3.3
 
 flutter:
   uses-material-design: true
@@ -52,4 +53,14 @@ flutter:
     - assets/images/foods/
     - assets/images/failure/
 
-      
+flutter_native_splash:
+  background_image: assets/images/splash/splash.png
+  android_12:
+    background_image: assets/images/splash/splash.png
+  fullscreen: true
+  android: true
+  android_gravity: center
+  ios: true
+  ios_content_mode: center
+  web: false
+
