@@ -97,6 +97,7 @@ void main() {
         setUpMockResult(Result.success(FoodRecognitionIngredients(foodRecognitionDomain)));
         await mainBodyApp(tester);
         await setupMockSearchBody(tester);
+        expect(find.byType(GridView), findsOneWidget);
         expect(find.byType(FoodRecognitionResultIngredientWidget), findsWidgets);
       },
     );
