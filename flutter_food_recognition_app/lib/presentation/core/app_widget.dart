@@ -24,8 +24,8 @@ class _AppWidgetState extends State<AppWidget> {
           statusBarIconBrightness: Brightness.light,
         ),
       );
-      Modular.setInitialRoute('/');
     }
+    Modular.setInitialRoute('/');
   }
 
   @override
