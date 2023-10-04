@@ -58,7 +58,6 @@ flutter_native_splash:
   image: assets/images/splash/splash.jpg
   android_12:
     image: assets/images/splash/splash.jpg
-  fullscreen: true
   android: true
   android_gravity: center
   ios: true
