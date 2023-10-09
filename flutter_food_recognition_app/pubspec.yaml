@@ -26,6 +26,7 @@ dev_dependencies:
   lint: ^2.1.2
   mocktail: ^1.0.0
   flutter_native_splash: ^2.3.3
+  icons_launcher: ^2.1.4
 
 flutter:
   uses-material-design: true
@@ -64,3 +65,19 @@ flutter_native_splash:
   ios_content_mode: center
   web: false
 
+icons_launcher:
+  platforms:
+    android:
+      enable: true
+      image_path: assets/images/icons_launcher/icon_launcher_android.png
+    ios:
+      enable: true
+      image_path: assets/images/icons_launcher/icon_launcher_ios.png
+    web:
+      enable: false
+    macos:
+      enable: false
+    windows:
+      enable: false
+    linux:
+      enable: false

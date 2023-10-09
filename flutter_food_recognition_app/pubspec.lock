@@ -350,6 +350,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
+  icons_launcher:
+    dependency: "direct dev"
+    description:
+      name: icons_launcher
+      sha256: "69de6373013966ea033f4cefbbbae258ccbfe790a6cfc69796cb33fda996298a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.4"
   image:
     dependency: transitive
     description:
