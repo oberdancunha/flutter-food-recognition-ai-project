@@ -14,13 +14,18 @@ class MainPage extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        body: const RxRoot(child: FoodRecognitionBodyWidget()),
-        bottomNavigationBar: Padding(
-          padding: const EdgeInsets.only(bottom: 10),
-          child: ImageSourceChooseWidget(
-            foodRecognitionReducer: foodRecognitionReducer,
+  Widget build(BuildContext context) => SafeArea(
+        top: false,
+        left: false,
+        right: false,
+        child: Scaffold(
+          backgroundColor: Theme.of(context).colorScheme.primary,
+          body: const RxRoot(child: FoodRecognitionBodyWidget()),
+          bottomNavigationBar: Padding(
+            padding: const EdgeInsets.only(bottom: 10),
+            child: ImageSourceChooseWidget(
+              foodRecognitionReducer: foodRecognitionReducer,
+            ),
           ),
         ),
       );
