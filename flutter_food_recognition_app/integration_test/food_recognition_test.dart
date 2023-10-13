@@ -51,6 +51,7 @@ void main() {
     await tester.pumpWidget(const AppWidget());
     await tester.pump(const Duration(seconds: 2));
     expect(find.byType(MainPage), findsOneWidget);
+    expect(find.byType(SafeArea), findsOneWidget);
     expect(find.byType(RxRoot), findsOneWidget);
     expect(find.byType(ImageSourceChooseWidget), findsOneWidget);
     await tester.tap(
