@@ -63,7 +63,7 @@ Obviamente, as chaves privadas de acesso ao Clarifai não estão disponíveis no
 
 O arquivo contém os seguintes campos:
 
-```json
+```
 CLARIFAI_BASE_URL=https://api.clarifai.com
 CLARIFAI_MODEL_URL=v2/models
 CLARIFAI_API_MODEL_ID=general-image-recognition/versions
